@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Quiz App</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f2f2f2;
+      padding: 2rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .quiz-box {
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      width: 100%;
+      max-width: 500px;
+    }
+
+    .quiz-box h2 {
+      margin-bottom: 1rem;
+    }
+
+    .option {
+      background: #eee;
+      margin: 0.5rem 0;
+      padding: 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .option:hover {
+      background-color: #dcdcdc;
+    }
+
+    .option.correct {
+      background-color: #a8e6a3;
+    }
+
+    .option.wrong {
+      background-color: #f6a6a6;
+    }
+
+    #nextBtn {
+      margin-top: 1rem;
+      background: #007bff;
+      color: white;
+      border: none;
+      padding: 0.8rem 1.2rem;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+      display: none;
+    }
+
+    #nextBtn:hover {
+      background: #0056b3;
+    }
+
+    #score-box {
+      text-align: center;
+      display: none;
+    }
+
+    #score-box h2 {
+      color: #333;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="quiz-box">
+    <h2 id="question">Loading question...</h2>
+    <div id="options"></div>
+    <button id="nextBtn" onclick="nextQuestion()">Next</button>
+    <div id="score-box">
+      <h2>Quiz Completed!</h2>
+      <p id="scoreText"></p>
+    </div>
+  </div>
+
+  <script>
+    const quizData = [
+      {
+        question: "What does HTML stand for?",
+        options: ["Hyper Trainer Marking Language", "Hyper Text Markup Language", "Hyper Text Marketing Language", "Home Tool Markup Language"],
+        correct: 1
+      },
+      {
+        question: "Which one is a JavaScript framework?",
+        options: ["Laravel", "Django", "React", "Flask"],
+        correct: 2
+      },
+      {
+        question: "What does CSS control?",
+        options: ["Structure", "Logic", "Style", "Database"],
+        correct: 2
+      }
+    ];
+
+    let current = 0;
+    let score = 0;
+
+    const questionEl = document.getElementById('question');
+    const optionsEl = document.getElementById('options');
+    const nextBtn = document.getElementById('nextBtn');
+    const scoreBox = document.getElementById('score-box');
+    const scoreText = document.getElementById('scoreText');
+
+    function showQuestion() {
+      nextBtn.style.display = 'none';
+      const q = quizData[current];
+      questionEl.textContent = q.question;
+      optionsEl.innerHTML = "";
+
+      q.options.forEach((opt, index) => {
+        const div = document.createElement('div');
+        div.classList.add('option');
+        div.textContent = opt;
+        div.onclick = () => selectOption(div, index);
+        optionsEl.appendChild(div);
+      });
+    }
+
+    function selectOption(el, selectedIndex) {
+      const q = quizData[current];
+      const options = document.querySelectorAll('.option');
+      options.forEach(option => option.style.pointerEvents = "none");
+
+      if (selectedIndex === q.correct) {
+        el.classList.add('correct');
+        score++;
+      } else {
+        el.classList.add('wrong');
+        options[q.correct].classList.add('correct');
+      }
+
+      nextBtn.style.display = 'inline-block';
+    }
+
+    function nextQuestion() {
+      current++;
+      if (current < quizData.length) {
+        showQuestion();
+      } else {
+        showScore();
+      }
+    }
+
+    function showScore() {
+      questionEl.style.display = 'none';
+      optionsEl.style.display = 'none';
+      nextBtn.style.display = 'none';
+      scoreBox.style.display = 'block';
+      scoreText.textContent = `You got ${score} out of ${quizData.length} correct!`;
+    }
+
+    // Load first question
+    showQuestion();
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Melvin's App Gallery</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #f5f5f5;
+      color: #333;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 1rem;
+      background: #1e1e2f;
+      color: white;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+
+    header p {
+      margin-top: 0.5rem;
+      font-size: 1.1rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      padding: 2rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .project {
+      background: white;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      transition: transform 0.2s ease;
+    }
+
+    .project:hover {
+      transform: translateY(-5px);
+    }
+
+    .project img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .project-info {
+      padding: 1rem;
+    }
+
+    .project-info h3 {
+      margin: 0 0 0.5rem;
+      font-size: 1.2rem;
+    }
+
+    .project-info p {
+      font-size: 0.95rem;
+      margin: 0 0 0.5rem;
+    }
+
+    .project-info a {
+      color: #007bff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .project-info a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      background: #eaeaea;
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Melvin's App Showcase</h1>
+  <p>Explore screenshots and descriptions of my top development projects.<br>
+  You are adviced to view the image in new window to see the full image</p>
+</header>
+
+<section class="grid">
+  <div class="project">
+    <img src="Screenshot (104).png" alt="Calculator App">
+    <div class="project-info">
+      <h3>Calculator App</h3>
+      <p>A clean and responsive calculator built with HTML, CSS, and JavaScript.</p>
+      <a href="calculator.html">Live Demo</a>
+    </div>
+  </div>
+
+  <div class="project">
+    <img src="Screenshot (105).png" alt="Quiz App">
+    <div class="project-info">
+      <h3>Quiz App</h3>
+      <p>Interactive JavaScript quiz app with score tracking and feedback.</p>
+      <a href="quiz.html">Live Demo</a>
+    </div>
+  </div>
+
+  <div class="project">
+    <img src="Screenshot (106).png" alt="Snake Game">
+    <div class="project-info">
+      <h3>Snake Game</h3>
+      <p>Classic snake game powered by canvas and JavaScript.</p>
+      <a href="snake.html">Live Demo</a>
+    </div>
+  </div>
+
+  <div class="project">
+    <img src="Screenshot (102).png" alt="Full-Stack School Website">
+    <div class="project-info">
+      <h3>Full-Stack School Website</h3>
+      <p>Built with PHP & MySQL. Includes admin login, student portal, and dashboard.</p>
+    </div>
+  </div>
+
+  <div class="project">
+    <img src="Screenshot_20250804-134835.png" alt="Video Player App">
+    <div class="project-info">
+      <h3>Video player App</h3>
+      <p>Play videos.</p>
+    </div>
+  </div>
+
+  <div class="project">
+    <img src="Screenshot_20250804-131809.png" alt="Music App">
+    <div class="project-info">
+      <h3>Music Streaming App</h3>
+      <p>Spotify-style app with real-time audio streaming & Firebase auth.</p>
+    </div>
+  </div>
+
+  <div class="project">
+    <img src="wizkid.png" alt="Social Media App">
+    <div class="project-info">
+      <h3>Social Media App</h3>
+      <p>Instagram & TikTok style social app with posting, likes, and user profiles.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>📧 Contact: <a href="mailto:heatkingcalderan@gmail.com">melvinemmagboduke@gmail.com</a></p>
+</footer>
+
+</body>
+</html>
+
